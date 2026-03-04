@@ -30,8 +30,8 @@
     font-family: 'Inter', sans-serif;
     background: white;
     color: var(--text-dark);
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   /* ====== PAGE BREAKS ====== */
@@ -49,7 +49,8 @@
     page-break-before: always;
   }
   /* Keep footer anchored and force page end after it */
-  .page-footer {
+  .page-footer { display: none; }
+  .page-footer-ORIG {
     break-inside: avoid;
     page-break-inside: avoid;
     break-after: page;
@@ -58,44 +59,69 @@
 
   /* ====== MOBILE RESPONSIVE ====== */
   @media (max-width: 768px) {
-    body { font-size: 13px; padding: 0; }
+    body { font-size: 14px; padding: 0; }
     .page { width: 100%; }
+    
     .cover { padding: 24px 20px 20px; }
     .cover h1 { font-size: 26px; }
-    .cover .subtitle { font-size: 13px; }
+    .cover .subtitle { font-size: 14px; line-height: 1.5; }
     .cover-stats { flex-wrap: wrap; gap: 10px; }
     .cover-stat { min-width: 45%; flex: 1; padding: 10px 14px; }
     .cover-stat .num { font-size: 22px; }
+    
     .body-content { padding: 16px; }
     .page-header { padding: 14px 16px; flex-wrap: wrap; gap: 6px; }
     .page-header .page-title { font-size: 16px; }
-    .two-col, .three-col { grid-template-columns: 1fr; }
-    .player-card { grid-template-columns: 1fr; gap: 8px; }
-    .player-name { font-size: 16px; }
+    
+    /* Force ALL multi-col to single column on mobile */
+    .two-col, .three-col { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    div[style*="display: grid"] { grid-template-columns: 1fr !important; }
+    div[style*="display:grid"] { grid-template-columns: 1fr !important; }
+    
+    .player-card { grid-template-columns: 1fr !important; gap: 10px; padding: 14px; }
+    .player-name { font-size: 17px; }
+    .player-meta { font-size: 12px; }
     .score-block { display: inline-block; margin-right: 16px; }
+    .score-block .score-val { font-size: 22px !important; }
+    .score-block .score-lbl { font-size: 11px; }
     .rank-change-big { display: inline-block; }
+    .rank-change-big .change-num { font-size: 20px !important; }
+    
+    .mini-rule-row { grid-template-columns: 1fr !important; gap: 4px; padding: 8px 4px; }
+    .mini-rule-row .mr-cat { margin-bottom: 2px; font-size: 13px; }
+    .mini-rule-row div { font-size: 13px !important; line-height: 1.5; }
+    
     .callout-bar { flex-direction: column; gap: 8px; padding: 14px; }
-    .callout-bar .cb-text { font-size: 12px; }
-    .comp-table { font-size: 9px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .comp-table thead th { padding: 6px 5px; font-size: 8px; white-space: nowrap; }
-    .comp-table tbody td { padding: 5px 5px; font-size: 9px; }
-    .page-footer { padding: 8px 16px; font-size: 8px; flex-wrap: wrap; gap: 4px; }
-    .headline-box { padding: 14px 16px; }
-    .headline-box h2 { font-size: 16px; }
-    .headline-box p { font-size: 11px; }
-    .section-title { font-size: 14px; }
-    .strategy-tile ul li { font-size: 12px; }
-    .mini-rule-row { grid-template-columns: 1fr; gap: 2px; }
-    .mini-rule-row .mr-cat { margin-bottom: 2px; }
-    table { font-size: 11px; }
-    thead th { font-size: 10px; padding: 6px 8px; }
-    tbody td { padding: 6px 8px; }
-    .insight-box { padding: 12px !important; }
-    .insight-box .ib-text { font-size: 12px; }
-    /* 5 rules box */
-    .page:nth-child(5) [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
-    /* Week 18 checklist */
-    [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    .callout-bar .cb-text { font-size: 13px; line-height: 1.6; }
+    
+    .comp-table { font-size: 11px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .comp-table thead th { padding: 6px 5px; font-size: 9px; white-space: nowrap; }
+    .comp-table tbody td { padding: 5px 5px; font-size: 10px; }
+    table { font-size: 12px; }
+    thead th { font-size: 11px; padding: 6px 8px; }
+    tbody td { padding: 6px 8px; font-size: 12px; }
+    
+    .headline-box { padding: 16px; }
+    .headline-box h2 { font-size: 18px; }
+    .headline-box p { font-size: 13px; line-height: 1.6; }
+    .section-title { font-size: 16px; }
+    
+    .strategy-tile { padding: 14px; }
+    .strategy-tile ul li { font-size: 13px; line-height: 1.6; padding: 6px 0; }
+    .strategy-tile .strat-title { font-size: 14px; }
+    
+    .insight-box { padding: 14px !important; }
+    .insight-box .ib-text { font-size: 13px; line-height: 1.6; }
+    .insight-box .ib-title { font-size: 14px; }
+    
+    .card { padding: 14px; }
+    .card-title { font-size: 13px; }
+    
+    .why-box { font-size: 12px; }
+    .rule-intro { font-size: 13px; }
+    
+    .page-footer { display: none; }
   }
 
   /* ====== HEADER STRIP ====== */
@@ -476,7 +502,8 @@
   .strategy-tile ul li strong { color: var(--navy); }
 
   /* ====== FOOTER ====== */
-  .page-footer {
+  .page-footer { display: none; }
+  .page-footer-ORIG {
     background: var(--navy);
     color: rgba(255,255,255,0.5);
     padding: 8px 36px;
@@ -627,7 +654,8 @@
   }
   
   /* Page footer subtle gold accent */
-  .page-footer {
+  .page-footer { display: none; }
+  .page-footer-ORIG {
     border-top: 2px solid var(--gold);
   }
   
@@ -2107,6 +2135,13 @@
     <span>MSFL 2025 Value Report · Week 18 analysis from CBS League data + NFL play-by-play (nfl_data_py)</span>
     <span>Page 7 of 7</span>
   </div>
+</div>
+
+
+<div style="max-width:1100px; margin:40px auto 0; padding:20px 36px; text-align:center; color:#6b7a99; font-size:12px; border-top:2px solid #f0a500;">
+  <div style="font-family:'Oswald',sans-serif; font-size:13px; font-weight:600; color:#0d1f3c; letter-spacing:1px; margin-bottom:6px;">MSFL 2025 VALUE REPORT</div>
+  <div>CBS League verified data &middot; ESPN: Gronkey Kong's Lair &middot; TD distances from NFL play-by-play (nfl_data_py)</div>
+  <div style="margin-top:4px;">Prepared for David Rudolph</div>
 </div>
 
 </body>
