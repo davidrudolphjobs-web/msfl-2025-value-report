@@ -26,17 +26,15 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
   body {
     font-family: 'Inter', sans-serif;
     background: white;
     color: var(--text-dark);
     font-size: 11px;
     line-height: 1.5;
-    padding-bottom: 40px;
   }
 
-  /* ====== LAYOUT ====== */
+  /* ====== PAGE BREAKS ====== */
   .page {
     width: 100%;
     max-width: 1100px;
@@ -45,24 +43,18 @@
     position: relative;
   }
 
-  
-  
+  /* Force each .page div onto its own PDF page */
   .page + .page {
-    margin-top: 0;
+    break-before: page;
+    page-break-before: always;
   }
-  .page-footer { display: none; } .page-footer-DISABLED {
-    
-    page-
+  /* Keep footer anchored and force page end after it */
+  .page-footer {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: page;
+    page-break-after: always;
   }
-  /* Keep key sections together */
-  .strategy-tile {  page- }
-  .player-card {  page- }
-  .insight-box {  page- }
-  .headline-box {  page- }
-  .card {  page- }
-  .callout-bar {  page- }
-  /* Section titles should stay with their content */
-  .section-title {  page- }
 
   /* ====== MOBILE RESPONSIVE ====== */
   @media (max-width: 768px) {
@@ -87,7 +79,7 @@
     .comp-table { font-size: 9px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .comp-table thead th { padding: 6px 5px; font-size: 8px; white-space: nowrap; }
     .comp-table tbody td { padding: 5px 5px; font-size: 9px; }
-    .page-footer { display: none; } .page-footer-DISABLED { padding: 8px 16px; font-size: 8px; flex-wrap: wrap; gap: 4px; }
+    .page-footer { padding: 8px 16px; font-size: 8px; flex-wrap: wrap; gap: 4px; }
     .headline-box { padding: 14px 16px; }
     .headline-box h2 { font-size: 16px; }
     .headline-box p { font-size: 11px; }
@@ -484,7 +476,7 @@
   .strategy-tile ul li strong { color: var(--navy); }
 
   /* ====== FOOTER ====== */
-  .page-footer { display: none; } .page-footer-DISABLED {
+  .page-footer {
     background: var(--navy);
     color: rgba(255,255,255,0.5);
     padding: 8px 36px;
@@ -572,7 +564,11 @@
 
   .td-note { font-size: 9px; color: var(--gray-text); font-style: italic; }
 
-
+  /* Print */
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { margin: 0; }
+  }
 
   .team-logo { width: 18px; height: 18px; vertical-align: middle; margin-right: 4px; border-radius: 2px; }
   .team-logo-sm { width: 14px; height: 14px; vertical-align: middle; margin-right: 3px; border-radius: 2px; }
@@ -631,7 +627,7 @@
   }
   
   /* Page footer subtle gold accent */
-  .page-footer { display: none; } .page-footer-DISABLED {
+  .page-footer {
     border-top: 2px solid var(--gold);
   }
   
@@ -932,7 +928,7 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report — Built from CBS League verified data</span>
-    <span></span>
+    <span>Page 1 of 7</span>
   </div>
 </div>
 
@@ -943,7 +939,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">🚀 Players Who RISE in MSFL Value</div>
-    
+    <div class="page-num">Page 2 of 7</div>
   </div>
 
   <div class="body-content">
@@ -1053,7 +1049,7 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report — CBS League verified data · TD distance breakdowns from NFL play-by-play data (nfl_data_py)</span>
-    <span></span>
+    <span>Page 2 of 7</span>
   </div>
 </div>
 
@@ -1064,7 +1060,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">📉 Players Who FALL in MSFL Value</div>
-    
+    <div class="page-num">Page 3 of 7</div>
   </div>
 
   <div class="body-content">
@@ -1181,7 +1177,7 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report — CBS League verified data · ESPN data from Gronkey Kong's Lair league</span>
-    <span></span>
+    <span>Page 3 of 7</span>
   </div>
 </div>
 
@@ -1192,7 +1188,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">📊 2025 Full MSFL vs. ESPN Rankings</div>
-    
+    <div class="page-num">Page 4 of 7</div>
   </div>
 
   <div class="body-content" style="padding:20px 36px 16px;">
@@ -1606,7 +1602,7 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report — CBS League data verified by David Rudolph</span>
-    <span></span>
+    <span>Page 4 of 7</span>
   </div>
 </div>
 
@@ -1617,7 +1613,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">🎯 MSFL Draft Strategy Guide</div>
-    
+    <div class="page-num">Page 5 of 7</div>
   </div>
 
   <div class="body-content">
@@ -1739,7 +1735,7 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report · Prepared for David Rudolph · CBS League data verified · ESPN data: Gronkey Kong's Lair · TD distances from NFL play-by-play data (nfl_data_py)</span>
-    <span></span>
+    <span>Page 5 of 7</span>
   </div>
 </div>
 
@@ -1750,7 +1746,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">📅 The Week 18 Factor — MSFL's Hidden Edge</div>
-    
+    <div class="page-num">Page 6 of 7</div>
   </div>
 
   <div class="body-content">
@@ -1956,7 +1952,7 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report · Week 18 stats from CBS League (Rudolph & Son) · Total-points league strategy</span>
-    <span></span>
+    <span>Page 6 of 7</span>
   </div>
 </div>
 
@@ -1967,7 +1963,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">🤔 Week 18 Reality Check — Is It Worth Drafting Around?</div>
-    
+    <div class="page-num">Page 7 of 7</div>
   </div>
 
   <div class="body-content">
@@ -2109,15 +2105,9 @@
   </div>
   <div class="page-footer">
     <span>MSFL 2025 Value Report · Week 18 analysis from CBS League data + NFL play-by-play (nfl_data_py)</span>
-    <span></span>
+    <span>Page 7 of 7</span>
   </div>
 </div>
 
-
-<div style="max-width:1100px; margin:40px auto 0; padding:20px 36px; text-align:center; color:#6b7a99; font-size:11px; border-top:2px solid #f0a500;">
-  <div style="font-family:'Oswald',sans-serif; font-size:13px; font-weight:600; color:#0d1f3c; letter-spacing:1px; margin-bottom:6px;">MSFL 2025 VALUE REPORT</div>
-  <div>Built from CBS League verified data · ESPN data from Gronkey Kong's Lair · TD distance breakdowns from NFL play-by-play data (nfl_data_py)</div>
-  <div style="margin-top:4px;">Prepared for David Rudolph · 2025 Season Analysis</div>
-</div>
 </body>
 </html>
