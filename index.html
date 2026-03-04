@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MSFL vs Standard Fantasy Football — 2025 Value Report</title>
-<meta property="og:title" content="MSFL vs ESPN Fantasy — 2025 Value Report">
-<meta property="og:description" content="Who rises, who falls, and how to win your draft when every touchdown has a distance premium and PPR is off the table.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap');
 
@@ -29,16 +27,16 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Inter', sans-serif;
-    background: #f0f2f7;
+    background: white;
     color: var(--text-dark);
     font-size: 11px;
     line-height: 1.5;
+    padding-bottom: 40px;
   }
 
-  /* ====== PAGE BREAKS ====== */
+  /* ====== LAYOUT ====== */
   .page {
     width: 100%;
     max-width: 1100px;
@@ -47,23 +45,24 @@
     position: relative;
   }
 
-  /* Let content flow naturally — no forced page breaks */
-  /* Puppeteer will paginate based on content height */
+  
+  
   .page + .page {
-    margin-top: 40px;
-    border-top: 3px solid var(--gold);
-    padding-top: 0;
+    margin-top: 0;
   }
-
+  .page-footer { display: none; } .page-footer-DISABLED {
+    
+    page-
+  }
   /* Keep key sections together */
-  .strategy-tile { break-inside: avoid; page-break-inside: avoid; }
-  .player-card { break-inside: avoid; page-break-inside: avoid; }
-  .insight-box { break-inside: avoid; page-break-inside: avoid; }
-  .headline-box { break-inside: avoid; page-break-inside: avoid; }
-  .card { break-inside: avoid; page-break-inside: avoid; }
-  .callout-bar { break-inside: avoid; page-break-inside: avoid; }
+  .strategy-tile {  page- }
+  .player-card {  page- }
+  .insight-box {  page- }
+  .headline-box {  page- }
+  .card {  page- }
+  .callout-bar {  page- }
   /* Section titles should stay with their content */
-  .section-title { break-after: avoid; page-break-after: avoid; }
+  .section-title {  page- }
 
   /* ====== MOBILE RESPONSIVE ====== */
   @media (max-width: 768px) {
@@ -88,7 +87,7 @@
     .comp-table { font-size: 9px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .comp-table thead th { padding: 6px 5px; font-size: 8px; white-space: nowrap; }
     .comp-table tbody td { padding: 5px 5px; font-size: 9px; }
-    .page-footer { padding: 8px 16px; font-size: 8px; flex-wrap: wrap; gap: 4px; }
+    .page-footer { display: none; } .page-footer-DISABLED { padding: 8px 16px; font-size: 8px; flex-wrap: wrap; gap: 4px; }
     .headline-box { padding: 14px 16px; }
     .headline-box h2 { font-size: 16px; }
     .headline-box p { font-size: 11px; }
@@ -484,7 +483,17 @@
   }
   .strategy-tile ul li strong { color: var(--navy); }
 
-  .page-footer { display: none; }
+  /* ====== FOOTER ====== */
+  .page-footer { display: none; } .page-footer-DISABLED {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    padding: 8px 36px;
+    font-size: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-footer span { letter-spacing: 0.5px; }
 
   /* ====== CALLOUT BAR ====== */
   .callout-bar {
@@ -563,11 +572,7 @@
 
   .td-note { font-size: 9px; color: var(--gray-text); font-style: italic; }
 
-  /* Print */
-  @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .page { margin: 0; }
-  }
+
 
   .team-logo { width: 18px; height: 18px; vertical-align: middle; margin-right: 4px; border-radius: 2px; }
   .team-logo-sm { width: 14px; height: 14px; vertical-align: middle; margin-right: 3px; border-radius: 2px; }
@@ -625,7 +630,10 @@
     box-shadow: 0 2px 8px rgba(13,31,60,0.15);
   }
   
-
+  /* Page footer subtle gold accent */
+  .page-footer { display: none; } .page-footer-DISABLED {
+    border-top: 2px solid var(--gold);
+  }
   
   /* Page header gold underline */
   .page-header {
@@ -922,6 +930,10 @@
     </div>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report — Built from CBS League verified data</span>
+    <span></span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -931,6 +943,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">🚀 Players Who RISE in MSFL Value</div>
+    
   </div>
 
   <div class="body-content">
@@ -1038,6 +1051,10 @@
     </div>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report — CBS League verified data · TD distance breakdowns from NFL play-by-play data (nfl_data_py)</span>
+    <span></span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1047,6 +1064,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">📉 Players Who FALL in MSFL Value</div>
+    
   </div>
 
   <div class="body-content">
@@ -1161,6 +1179,10 @@
     </div>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report — CBS League verified data · ESPN data from Gronkey Kong's Lair league</span>
+    <span></span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1170,6 +1192,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">📊 2025 Full MSFL vs. ESPN Rankings</div>
+    
   </div>
 
   <div class="body-content" style="padding:20px 36px 16px;">
@@ -1581,6 +1604,10 @@
     <p class="td-note" style="margin-top:10px;">🚨 = Biggest rank movers (10+ spots). MSFL scores from verified CBS league data. ESPN scores from Gronkey Kong's Lair ESPN standard league. TD distance breakdowns from NFL play-by-play data (nfl_data_py).</p>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report — CBS League data verified by David Rudolph</span>
+    <span></span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1590,6 +1617,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">🎯 MSFL Draft Strategy Guide</div>
+    
   </div>
 
   <div class="body-content">
@@ -1709,6 +1737,10 @@
     </div>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report · Prepared for David Rudolph · CBS League data verified · ESPN data: Gronkey Kong's Lair · TD distances from NFL play-by-play data (nfl_data_py)</span>
+    <span></span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1718,6 +1750,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">📅 The Week 18 Factor — MSFL's Hidden Edge</div>
+    
   </div>
 
   <div class="body-content">
@@ -1921,6 +1954,10 @@
     </div>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report · Week 18 stats from CBS League (Rudolph & Son) · Total-points league strategy</span>
+    <span></span>
+  </div>
 </div>
 
 <!-- ============================================================ -->
@@ -1930,6 +1967,7 @@
   <div class="page-header">
     <div class="league-badge">MSFL 2025 Report</div>
     <div class="page-title">🤔 Week 18 Reality Check — Is It Worth Drafting Around?</div>
+    
   </div>
 
   <div class="body-content">
@@ -2069,15 +2107,17 @@
     </div>
 
   </div>
+  <div class="page-footer">
+    <span>MSFL 2025 Value Report · Week 18 analysis from CBS League data + NFL play-by-play (nfl_data_py)</span>
+    <span></span>
+  </div>
 </div>
 
 
-<!-- SITE FOOTER -->
-<div style="max-width:1100px; margin:40px auto 0; padding:20px 36px 40px; text-align:center; color:#6b7a99; font-size:11px; line-height:1.6;">
-  <div style="width:60px; height:3px; background:var(--gold); border-radius:2px; margin:0 auto 16px;"></div>
-  <strong style="color:#0d1f3c;">MSFL 2025 Value Report</strong><br>
-  Built from CBS League verified data · ESPN data from Gronkey Kong's Lair · TD distance breakdowns from NFL play-by-play data (nfl_data_py)<br>
-  Prepared for David Rudolph · © 2026
+<div style="max-width:1100px; margin:40px auto 0; padding:20px 36px; text-align:center; color:#6b7a99; font-size:11px; border-top:2px solid #f0a500;">
+  <div style="font-family:'Oswald',sans-serif; font-size:13px; font-weight:600; color:#0d1f3c; letter-spacing:1px; margin-bottom:6px;">MSFL 2025 VALUE REPORT</div>
+  <div>Built from CBS League verified data · ESPN data from Gronkey Kong's Lair · TD distance breakdowns from NFL play-by-play data (nfl_data_py)</div>
+  <div style="margin-top:4px;">Prepared for David Rudolph · 2025 Season Analysis</div>
 </div>
 </body>
 </html>
